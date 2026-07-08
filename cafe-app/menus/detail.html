@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴 상세 - 카페 앱</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="detail.css">
+</head>
+<body>
+
+    <header class="header">
+        <button type="button" class="btn-back" onclick="history.back()">←</button>
+        <h1 class="header-title">메뉴 상세</h1>
+        <a href="../basket/list.html" class="btn-cart">🛒 <span id="cartCount" class="cart-badge">0</span></a>
+    </header>
+
+    <main class="container">
+        <article class="detail-card">
+            <div class="image-container">
+                <img id="menuImage" src="" alt="메뉴 이미지" class="menu-image">
+            </div>
+            
+            <div class="info-container">
+                <div class="tags">
+                    <span id="menuStatus" class="tag-status">HOT</span>
+                </div>
+                <h2 id="menuName" class="menu-name">메뉴 이름</h2>
+                <p id="menuDescription" class="menu-description">메뉴에 대한 상세 설명이 들어갑니다.</p>
+                <div id="menuPrice" class="menu-price">0원</div>
+            </div>
+
+            <section class="options-section">
+                <h3 class="section-title">옵션 선택</h3>
+                
+                <div class="option-group">
+                    <span class="option-label">온도</span>
+                    <div class="option-buttons">
+                        <button type="button" class="btn-option active" data-type="temp" data-value="HOT">HOT</button>
+                        <button type="button" class="btn-option" data-type="temp" data-value="ICE">ICE</button>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <span class="option-label">사이즈</span>
+                    <div class="option-buttons">
+                        <button type="button" class="btn-option active" data-type="size" data-value="Regular">Regular</button>
+                        <button type="button" class="btn-option" data-type="size" data-value="Large">Large (+500원)</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="quantity-section">
+                <div class="quantity-selector">
+                    <button type="button" id="btnDecrease" class="btn-qty">-</button>
+                    <span id="quantityDisplay" class="qty-number">1</span>
+                    <button type="button" id="btnIncrease" class="btn-qty">+</button>
+                </div>
+                <div class="total-price-wrapper">
+                    <span class="total-label">총 주문 금액</span>
+                    <span id="totalPrice" class="total-price">0원</span>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer class="footer-actions">
+        <button type="button" id="btnAddToBasket" class="btn-secondary">장바구니 담기</button>
+        <button type="button" id="btnOrderNow" class="btn-primary">바로 주문하기</button>
+    </footer>
+
+    <script type="module" src="detail.js"></script>
+</body>
+</html>

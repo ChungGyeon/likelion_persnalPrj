@@ -1,0 +1,268 @@
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --secondary-color: #ec4899;
+    --bg-color: #f8fafc;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: rgba(255, 255, 255, 0.4);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Dynamic Mesh Background */
+.background-mesh {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-image: 
+        radial-gradient(at 40% 20%, hsla(250,100%,74%,0.4) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(189,100%,56%,0.4) 0px, transparent 50%),
+        radial-gradient(at 0% 50%, hsla(355,100%,93%,0.4) 0px, transparent 50%);
+    filter: blur(40px);
+    opacity: 0.8;
+}
+
+.app-container {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: transparent;
+    position: relative;
+    padding-bottom: 90px; /* nav padding */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px 16px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.btn-back {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--border-color);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 16px;
+    color: var(--text-main);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.btn-back:active {
+    transform: scale(0.9);
+}
+
+.header h1 {
+    flex: 1;
+    font-size: 1.25rem;
+    text-align: center;
+    margin: 0;
+    font-weight: 700;
+}
+
+.spacer { width: 36px; }
+
+.main-content {
+    padding: 20px 16px;
+}
+
+/* 탭 필터 */
+.filter-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.filter-btn {
+    flex: 1;
+    padding: 10px 0;
+    border: 1px solid var(--border-color);
+    background: rgba(255,255,255,0.4);
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Glassmorphism 주문 카드 스타일 */
+.order-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: var(--glass-shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.order-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background: var(--primary-color);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.order-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.1);
+}
+
+.order-card:hover::before {
+    opacity: 1;
+}
+
+.order-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.order-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.order-status {
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* 상태별 색상 */
+.status-ready { background: rgba(16, 185, 129, 0.15); color: #059669; }
+.status-preparing { background: rgba(245, 158, 11, 0.15); color: #d97706; }
+.status-complete { background: rgba(100, 116, 139, 0.15); color: #475569; }
+
+.order-details-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 15px;
+}
+
+.order-summary {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.order-price {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.empty-msg {
+    text-align: center;
+    color: var(--text-muted);
+    margin-top: 50px;
+    font-size: 1.1rem;
+}
+
+/* 하단 네비게이션 (Glassmorphism) */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    border-top: 1px solid var(--border-color);
+    border-radius: 25px 25px 0 0;
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+}
+
+.bottom-nav a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    flex-direction: column;
+    gap: 5px;
+    transition: all 0.3s;
+}
+
+.bottom-nav a i {
+    font-size: 1.3rem;
+    transition: transform 0.3s;
+}
+
+.bottom-nav a.active {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.bottom-nav a.active i {
+    transform: translateY(-3px);
+}

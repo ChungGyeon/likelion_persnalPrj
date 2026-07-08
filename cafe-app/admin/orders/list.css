@@ -1,0 +1,29 @@
+.order-table .badge {
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.order-table .badge.pending {
+    background-color: #fff0e1;
+    color: #ff8c00;
+}
+
+.order-table .badge.processing {
+    background-color: #e1f0ff;
+    color: #007bff;
+}
+
+.order-table .badge.completed {
+    background-color: #e1ffe6;
+    color: #28a745;
+}
+
+.order-table .btn-small {
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-right: 5px;
+}
