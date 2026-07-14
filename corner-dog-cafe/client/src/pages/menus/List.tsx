@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MenuCard from '../../components/MenuCard';
-import { categories, menus } from '../../js/data';
+import { categories } from '../../js/data';
+import { useApi } from '../../hooks/useApi';
+import apiClient from '../../lib/api';
+
+const fetchMenus = () => apiClient.get('/menus');
 
 const List = () => {
+  const { data: menus, loading, error, execute } = useApi(fetchMenus);
   const [selectedCategory, setSelectedCategory] = useState('전체');
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('인기순');
 
+  useEffect(() => {
+    execute();
+  }, [execute]);
+
+  if (loading) return <div>로딩 중...</div>;
+  if (error) return <div>오류 발생: {error}</div>;
+
   const filteredMenus = menus
-    .filter((menu) =>
+    ?.filter((menu) =>
       selectedCategory === '전체' ||
       categories.find((cat) => cat.id === menu.categoryId)?.name === selectedCategory
     )
@@ -50,11 +62,11 @@ const List = () => {
           <option value="가격 높은순">가격 높은순</option>
         </select>
       </header>
-      <main className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {filteredMenus.map((menu) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {filteredMenus?.map((menu) => (
           <MenuCard key={menu.id} menu={menu} />
         ))}
-      </main>
+      </div>
     </div>
   );
 };

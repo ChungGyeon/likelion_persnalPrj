@@ -37,7 +37,24 @@ const FormField = <
 }: ControllerProps<TFieldValues, TName>) => {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
-      <Controller {...props} />
+      <Controller
+        {...props}
+        render={({ field }) => (
+          <div>
+            <label htmlFor={field.name} className="sr-only">
+              {props.name}
+            </label>
+            <input
+              {...field}
+              id={field.name}
+              aria-describedby={`${field.name}-description`}
+            />
+            <p id={`${field.name}-description`} className="sr-only">
+              {props.name} input field
+            </p>
+          </div>
+        )}
+      />
     </FormFieldContext.Provider>
   );
 };

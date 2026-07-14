@@ -120,11 +120,25 @@ function Carousel({
         onKeyDownCapture={handleKeyDown}
         className={cn("relative", className)}
         role="region"
-        aria-roledescription="carousel"
+        aria-label="Image carousel"
         data-slot="carousel"
         {...props}
       >
         {children}
+        <button
+          onClick={() => api?.scrollPrev()}
+          aria-label="Scroll to previous slide"
+          disabled={!api?.canScrollPrev()}
+        >
+          <ArrowLeft />
+        </button>
+        <button
+          onClick={() => api?.scrollNext()}
+          aria-label="Scroll to next slide"
+          disabled={!api?.canScrollNext()}
+        >
+          <ArrowRight />
+        </button>
       </div>
     </CarouselContext.Provider>
   );
