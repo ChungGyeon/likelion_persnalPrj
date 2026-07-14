@@ -12,15 +12,5 @@ const StatusBadge = ({ status }) => {
 };
 
 export default StatusBadge;
-:root {
-  --color-bg-deep: #0D2B1E;
-  --color-bg-mid: #1A4A30;
-  --color-accent: #4CAF7D;
-  --color-surface: #F5F0E8;
-  --color-text-on-dark: #FFFFFF;
-  --color-text-muted: #A8C4B0;
-  --color-text-on-light: #1A1A1A;
-  --color-border: rgba(255, 255, 255, 0.12);
-  --color-danger: #E05252;
-}
+
 

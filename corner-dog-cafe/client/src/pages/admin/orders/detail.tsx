@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams } from 'wouter';
 import { ArrowLeft, User, CreditCard, Clock, FileText } from 'lucide-react';
 
 export default function AdminOrderDetail() {
